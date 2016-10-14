@@ -1,0 +1,10 @@
+<% if logged_in? %>
+<%= @current_user.email %>
+  <li>
+    <%= link_to "Log out", logout_path, method: "delete" %>
+  </li>
+<% else %>
+  <li>
+    <%= link_to "Log in", login_path %>
+  </li>
+<% end %>
