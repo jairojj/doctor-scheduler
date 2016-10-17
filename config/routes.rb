@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  get 'appointments/new', to: 'appointments#new'
+  post 'appointments', to: 'appointments#create'
   get 'doctors/index'
-
   get '/home', to: 'static_pages#home'
   get  '/signup',  to: 'pacients#new'
   post '/pacients', to: 'pacients#create'
@@ -10,6 +11,5 @@ Rails.application.routes.draw do
   get '/doctors', to: 'doctors#index'
 
   root 'login#new'
-  #resources :pacients
-  
+
 end

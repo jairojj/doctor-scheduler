@@ -1,23 +1,27 @@
-<% if logged_in? %>
-<%= @current_user.email %>
-  <li>
-    <%= link_to "Home", '/home' %>
-  </li>
-
-  <li>
-    <%= link_to "Marque uma consulta", '\doctors' %>
-  </li>
-
-  <li>
-    <%= link_to "Log out", logout_path, method: "delete" %>
-  </li>
+<div style="border-style:solid; border-width:5px; margin:5px; padding:5px; float:left"> 
+  <% if logged_in? %>
+    <div style="float:left; margin-right:5px"> <%= @current_user.email %> </div>
+    
+    <div style="float:left; margin-right:5px">
+      <%= link_to "Home", '/home' %>
+    </div>
   
-<% else %>
-  <li>
-    <%= link_to "Home", '/home' %>
-  </li>
-
-  <li>
-    <%= link_to "Log in", login_path %>
-  </li>
-<% end %>
+    <div style="float:left; margin-right:5px">
+      <%= link_to "Marque uma consulta", '\doctors' %>
+    </div>
+  
+    <div style="float:left; margin-right:5px">
+      <%= link_to "Log out", logout_path, method: "delete" %>
+    </div>
+    
+  <% else %>
+    <div style="float:left; margin-right:5px">
+      <%= link_to "Home", '/home' %>
+    </div>
+  
+    <div style="float:left; margin-right:5px">
+      <%= link_to "Log in", login_path %>
+    </div>
+  <% end %>
+</div>
+<br><br><br><br><br>
