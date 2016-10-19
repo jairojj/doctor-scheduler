@@ -1,10 +1,14 @@
 <% @doctor.each do |doctor| %>
-<div style="border-style:solid; border-width:5px; float:left; margin:5px"> 
-  <%= doctor.name %>
-  <br>
-  <%= image_tag(doctor.img, size: "200x200") %>
-  <br>
-  <%= link_to 'Marcar consulta', appointments_new_path(:id => doctor.id) %>
+<div style="border-style:solid; border-width:5px; float:left; margin:5px">
+  <div style="margin:5px">
+    <%= doctor.name %>
+    <br>
+    <%= image_tag(doctor.img, size: "200x200") %>
+    <br>
+    <div style="margin:5px">
+      <%= link_to 'Marcar consulta', appointments_new_path(:id => doctor.id), :class => "btn btn-small btn-primary" %>
+    </div>
+  </div>
 </div>
 
 <% end %>

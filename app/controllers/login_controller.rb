@@ -10,6 +10,7 @@ class LoginController < ApplicationController
       log_in pacient
       redirect_to '/home'
     else
+      flash.now[:danger] = 'Invalid email/password combination'
       render 'new'
     end
   end

@@ -4,10 +4,12 @@
 <%= image_tag(@doctor.img, size: "200x200") %>
 <br>
 
-<%= form_for(@doctor, url: appointments_path) do |f| %>
-  <p>Selecione o tipo da consulta:</p>
+<%= form_for(@appointment, url: appointments_path) do |f| %>
+  <span>Selecione o tipo da consulta:</span>
   <%= select_tag(:type, options_for_select([['Exame',1], ['Tratamento',2], ['Cirurgia',3]])) %>
   <br>
-  
-  <%= f.submit "Create my account", class: "btn btn-primary" %>
+  <%= f.label :date %>
+  <%= f.text_field :date, "data-provide" => 'datepicker' %>
+  <br>
+  <%= f.submit "Agendar", class: "btn btn-primary" %>
 <% end %>

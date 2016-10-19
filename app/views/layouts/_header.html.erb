@@ -1,27 +1,20 @@
-<div style="border-style:solid; border-width:5px; margin:5px; padding:5px; float:left"> 
-  <% if logged_in? %>
-    <div style="float:left; margin-right:5px"> <%= @current_user.email %> </div>
-    
-    <div style="float:left; margin-right:5px">
-      <%= link_to "Home", '/home' %>
-    </div>
-  
-    <div style="float:left; margin-right:5px">
-      <%= link_to "Marque uma consulta", '\doctors' %>
-    </div>
-  
-    <div style="float:left; margin-right:5px">
-      <%= link_to "Log out", logout_path, method: "delete" %>
-    </div>
-    
-  <% else %>
-    <div style="float:left; margin-right:5px">
-      <%= link_to "Home", '/home' %>
-    </div>
-  
-    <div style="float:left; margin-right:5px">
-      <%= link_to "Log in", login_path %>
-    </div>
-  <% end %>
-</div>
-<br><br><br><br><br>
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+      <% if logged_in? %>
+        <li><%= link_to "Home", '/home' %></li>
+        <li><%= link_to "Marque uma consulta", '/doctors' %></li>
+        <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+    </ul>    
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to @current_user.email, '#' %></li>
+        </ul>
+      <% else %>
+        <ul class="nav navbar-nav">
+          <li><%= link_to "Log in", login_path %></li>
+        </ul>
+      <% end %>
+  </div>
+</nav>
+
+
