@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'time/index'
+
   get 'appointments/new', to: 'appointments#new'
   post 'appointments', to: 'appointments#create'
   get 'doctors/index'
@@ -9,6 +11,7 @@ Rails.application.routes.draw do
   post   '/login',   to: 'login#create'
   delete '/logout', to: 'login#destroy'
   get '/doctors', to: 'doctors#index'
+  get '/time', to: 'time#index'
 
   root 'login#new'
 

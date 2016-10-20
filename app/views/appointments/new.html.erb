@@ -1,4 +1,19 @@
 <h1>Agende sua consulta</h1>
+
+<% if @appointment.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      The form contains <%= pluralize(@appointment.errors.count, "error") %>.
+    </div>
+    <ul>
+    <% @appointment.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
 <%= @doctor.name %>
 <br>
 <%= image_tag(@doctor.img, size: "200x200") %>
@@ -6,10 +21,18 @@
 
 <%= form_for(@appointment, url: appointments_path) do |f| %>
   <span>Selecione o tipo da consulta:</span>
-  <%= select_tag(:type, options_for_select([['Exame',1], ['Tratamento',2], ['Cirurgia',3]])) %>
+  <%= select_tag(:appointment_type, options_for_select([['Exame',"exame"], ['Tratamento','tratamento'], ['Cirurgia','cirurgia']])) %>
   <br>
-  <%= f.label :date %>
-  <%= f.text_field :date, "data-provide" => 'datepicker' %>
+  
+  <span>Selecione o dia da consulta:</span>
+  <%= f.text_field :date, "data-provide" => 'datepicker', "data-date-format" => "dd/mm/yyyy" %>
   <br>
+  
+  <span>Selecione a hora da consulta:</span>
+  <%= select_tag(:start) %>
+  <br>
+
   <%= f.submit "Agendar", class: "btn btn-primary" %>
 <% end %>
+
+<%= javascript_tag "var doctorId = #{@doctor_id};"%>

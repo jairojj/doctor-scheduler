@@ -1,12 +1,11 @@
 class CreateAppointments < ActiveRecord::Migration[5.0]
   def change
     create_table :appointments do |t|
-      t.string :doctor_id
-      t.string :pacient_id
+      t.integer :doctor_id
+      t.integer :pacient_id
       t.string :type
-      t.time :start
-      t.time :end
-      t.datetime :date
+      t.integer :start
+      t.date :date
 
       t.timestamps
     end

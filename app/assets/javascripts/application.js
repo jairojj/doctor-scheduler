@@ -21,11 +21,25 @@ $(function(){
   
   function formatDate(value)
   {
-     return value.getDate() + "/" + (value.getMonth()+1) + "/" + value.getFullYear();
+     return value.getFullYear() + "-" + (value.getMonth()+1) + "-" + value.getDate();
   }
   
   $("#appointment_date").datepicker().on('changeDate', function (e) {
     var newDate = new Date(e.date);
-    alert(formatDate(newDate));
+    
+    $.get('/time?date='+ formatDate(newDate) + '&doctor_id=' + doctorId , function(data) {
+      console.log(data);
+      
+      $('#start').empty();
+      
+      $.each(data.time, function (i, item) {
+        $('#start').append($('<option>', { 
+           value: item,
+           text : item + " hrs"
+        }));
+      });
+      
+    });
+    
   });
 })
