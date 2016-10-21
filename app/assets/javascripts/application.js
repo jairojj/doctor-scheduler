@@ -30,10 +30,10 @@ $(function(){
     $.get('/time?date='+ formatDate(newDate) + '&doctor_id=' + doctorId , function(data) {
       console.log(data);
       
-      $('#start').empty();
-      
+      $('#appointment_start').empty();
+
       $.each(data.time, function (i, item) {
-        $('#start').append($('<option>', { 
+        $('#appointment_start').append($('<option>', { 
            value: item,
            text : item + " hrs"
         }));

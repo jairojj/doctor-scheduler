@@ -8,12 +8,13 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    @appointment = Appointment.new(params.require(:appointment).permit(@doctor_id, @current_user.id, :appointment_type, :start, :date))
+    @appointment = Appointment.new(params.require(:appointment).permit(:doctor_id, :pacient_id, :appointment_type, :date, :start))
     if @appointment.save
+      flash[:success] = 'Consulta marcada com sucesso'
       redirect_to '/doctors'
-      flash.now[:default] = 'Consulta marcada com sucesso'
     else
-      render 'new'
+      flash[:danger] = 'Erro'
+      redirect_to '/doctors'
     end
   end
   

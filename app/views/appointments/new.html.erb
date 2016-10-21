@@ -20,16 +20,19 @@
 <br>
 
 <%= form_for(@appointment, url: appointments_path) do |f| %>
+  <%= f.hidden_field :doctor_id, :value => @doctor.id %>
+  <%= f.hidden_field :pacient_id, :value => @current_user.id %>
+  
   <span>Selecione o tipo da consulta:</span>
-  <%= select_tag(:appointment_type, options_for_select([['Exame',"exame"], ['Tratamento','tratamento'], ['Cirurgia','cirurgia']])) %>
+  <%= f.select(:appointment_type, options_for_select([['Exame',"exame"], ['Tratamento','tratamento'], ['Cirurgia','cirurgia']])) %>
   <br>
   
   <span>Selecione o dia da consulta:</span>
-  <%= f.text_field :date, "data-provide" => 'datepicker', "data-date-format" => "dd/mm/yyyy" %>
+  <%= f.text_field :date, "data-provide" => 'datepicker', "data-date-format" => "dd-mm-yyyy" %>
   <br>
   
   <span>Selecione a hora da consulta:</span>
-  <%= select_tag(:start) %>
+  <%= f.select(:start, options_for_select(['Horas'])) %>
   <br>
 
   <%= f.submit "Agendar", class: "btn btn-primary" %>
