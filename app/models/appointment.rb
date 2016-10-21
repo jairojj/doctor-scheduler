@@ -3,6 +3,6 @@ class Appointment < ApplicationRecord
   belongs_to :doctor
   
   validates :appointment_type,  presence: true, length: { maximum: 50 }
-  validates :start,  presence: true, length: { maximum: 50 }
+  validates :start,  presence: true, length: { maximum: 50 }, numericality: { only_integer: true }
   validates :date,  presence: true, length: { maximum: 50 }
 end

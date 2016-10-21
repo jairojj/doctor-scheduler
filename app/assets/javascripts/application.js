@@ -31,13 +31,21 @@ $(function(){
       console.log(data);
       
       $('#appointment_start').empty();
-
-      $.each(data.time, function (i, item) {
+      
+      if (data.time == "Nenhum horario disponível nesse dia"){
         $('#appointment_start').append($('<option>', { 
-           value: item,
-           text : item + " hrs"
+           value: data.time,
+           text : data.time
         }));
-      });
+      }
+      else{
+        $.each(data.time, function (i, item) {
+          $('#appointment_start').append($('<option>', { 
+             value: item,
+             text : item + " hrs"
+          }));
+        });
+      }
       
     });
     

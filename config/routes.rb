@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   delete '/logout', to: 'login#destroy'
   get '/doctors', to: 'doctors#index'
   get '/time', to: 'time#index'
+  get 'appointments/index', to: 'appointments#index'
+  delete 'appointments/destroy', to: 'appointments#destroy'
 
   root 'login#new'
 

@@ -4,6 +4,7 @@
       <% if logged_in? %>
         <li><%= link_to "Home", '/home' %></li>
         <li><%= link_to "Marque uma consulta", '/doctors' %></li>
+        <li><%= link_to "Suas consultas", '/appointments/index' %></li>
         <li><%= link_to "Log out", logout_path, method: "delete" %></li>
     </ul>    
         <ul class="nav navbar-nav navbar-right">

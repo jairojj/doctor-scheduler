@@ -1,10 +1,14 @@
 class AppointmentsController < ApplicationController
-  before_action :logged_in_user, only: [:new]
+  before_action :logged_in_user, only: [:new, :index]
   
   def new
     @doctor_id = params[:id]
     @appointment = Appointment.new
     @doctor = Doctor.find(params[:id])
+  end
+  
+  def index
+    @appointment = Appointment.where(pacient_id: current_user.id).select(:id, :doctor_id, :appointment_type, :date, :start)
   end
 
   def create
@@ -16,6 +20,13 @@ class AppointmentsController < ApplicationController
       flash[:danger] = 'Erro'
       redirect_to '/doctors'
     end
+  end
+  
+  def destroy
+    @appointment = Appointment.find(params[:id])
+    @appointment.destroy
+    flash[:success] = "Consulta cancelada com sucesso"
+    redirect_to '/appointments/index'
   end
   
   def logged_in_user

@@ -11,7 +11,11 @@ class TimeController < ApplicationController
       @appointment.each do |appointment|
         @time.delete_if { |time| time == appointment.start.to_i}
       end
-      render json: {time: @time}
+      if @time.empty?
+        render json: {time: "Nenhum horario disponível nesse dia"}
+      else
+        render json: {time: @time}
+      end
     end
   end
   
