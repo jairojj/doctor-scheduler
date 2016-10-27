@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   get '/home', to: 'static_pages#home'
   get  '/signup',  to: 'pacients#new'
   post '/pacients', to: 'pacients#create'
-  get    '/login',   to: 'login#new'
+  get    '/login-pacient',   to: 'login#new_pacient'
+  get    '/login-doctor',   to: 'login#new_doctor'
   post   '/login',   to: 'login#create'
   delete '/logout', to: 'login#destroy'
   get '/doctors', to: 'doctors#index'
@@ -15,6 +16,6 @@ Rails.application.routes.draw do
   get 'appointments/index', to: 'appointments#index'
   delete 'appointments/destroy', to: 'appointments#destroy'
 
-  root 'login#new'
+  root 'login#new_pacient'
 
 end

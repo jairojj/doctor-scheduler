@@ -1,9 +1,11 @@
-<h1 style="text-align:center">Log in</h1>
+<h1 style="text-align:center">Log in - Pacient</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(:login, url: login_path) do |f| %>
-
+      
+      <%= f.hidden_field :type, :value => "pacient" %>
+      
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>
       <br>
