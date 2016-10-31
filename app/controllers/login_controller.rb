@@ -1,11 +1,9 @@
 class LoginController < ApplicationController
-  before_action :logged_in_user, only: [:new]
+
   def new_pacient
-  
   end
   
   def new_doctor
-  
   end  
   
   def create
@@ -36,9 +34,4 @@ class LoginController < ApplicationController
     redirect_to root_url
   end
   
-  def logged_in_user
-    if logged_in?
-      redirect_to '/home'
-    end
-  end
 end

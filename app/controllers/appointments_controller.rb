@@ -1,5 +1,6 @@
 class AppointmentsController < ApplicationController
   before_action :logged_in_user, only: [:new, :index]
+  before_action :who, only: [:new]
   
   def new
     @doctor_id = params[:id]
@@ -31,6 +32,13 @@ class AppointmentsController < ApplicationController
   
   def logged_in_user
     unless logged_in?
+      redirect_to '/home'
+    end
+  end
+  
+  #Verifica se o usuario logado é doutor
+  def who
+    if who_user == 'doctor'
       redirect_to '/home'
     end
   end

@@ -1,14 +1,23 @@
 <nav class="navbar navbar-default navbar-static-top">
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <ul class="nav navbar-nav">
-      <% if logged_in? %>
-        <li><%= link_to "Home", '/home' %></li>
-        <li><%= link_to "Marque uma consulta", '/doctors' %></li>
-        <li><%= link_to "Suas consultas", '/appointments/index' %></li>
-        <li><%= link_to "Log out", logout_path, method: "delete" %></li>
-    </ul>    
+      <% if logged_in? && session[:pacient_id] %>
+        <ul class="nav navbar-nav">
+          <li><%= link_to "Home", '/home' %></li>
+          <li><%= link_to "Marque uma consulta", '/doctors' %></li>
+          <li><%= link_to "Suas consultas", '/appointments/index' %></li>
+          <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+        </ul>    
         <ul class="nav navbar-nav navbar-right">
           <li><%= link_to @current_user.email, '#' %></li>
+        </ul>
+      <% elsif logged_in? && session[:doctor_id] %>
+        <ul class="nav navbar-nav"> 
+          <li><%= link_to "Home", '/home' %></li>
+          <li><%= link_to "Suas consultas", '#' %></li>
+          <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to who_user, '#' %></li>
         </ul>
       <% else %>
         <ul class="nav navbar-nav">

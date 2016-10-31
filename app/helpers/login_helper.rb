@@ -16,6 +16,14 @@ module LoginHelper
     end
   end
   
+  def who_user
+    if session[:pacient_id]
+      @who_user = 'pacient'
+    else
+      @who_user = 'doctor'
+    end
+  end
+  
   def logged_in?
     !current_user.nil?
   end
