@@ -6,6 +6,7 @@ class AppointmentsController < ApplicationController
     @doctor_id = params[:id]
     @appointment = Appointment.new
     @doctor = Doctor.find(params[:id])
+    @today = Date.today
   end
   
   def index
@@ -23,7 +24,7 @@ class AppointmentsController < ApplicationController
       redirect_to '/doctors'
     else
       flash[:danger] = 'Erro'
-      redirect_to '/doctors'
+      redirect_to "/appointments/new?id=#{params[:appointment][:doctor_id]}"
     end
   end
   

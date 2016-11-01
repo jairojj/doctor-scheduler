@@ -28,7 +28,7 @@
   <br>
   
   <span>Selecione o dia da consulta:</span>
-  <%= f.text_field :date, "data-provide" => 'datepicker', "data-date-format" => "dd-mm-yyyy" %>
+  <%= f.text_field :date, "data-provide" => 'datepicker', "startDate" => @today.to_formatted_s(:db), "data-date-format" => "dd-mm-yyyy"%>
   <br>
   
   <span>Selecione a hora da consulta:</span>

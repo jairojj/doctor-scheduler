@@ -19,6 +19,7 @@
 
 $(function(){
   
+  
   function formatDate(value)
   {
      return value.getFullYear() + "-" + (value.getMonth()+1) + "-" + value.getDate();
