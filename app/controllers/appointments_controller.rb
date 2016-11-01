@@ -9,7 +9,11 @@ class AppointmentsController < ApplicationController
   end
   
   def index
-    @appointment = Appointment.where(pacient_id: current_user.id).select(:id, :doctor_id, :appointment_type, :date, :start)
+    if who_user == 'pacient'
+      @appointment = Appointment.where(pacient_id: current_user.id).select(:id, :doctor_id, :appointment_type, :date, :start)
+    else
+      @appointment = Appointment.where(doctor_id: current_user.id).select(:id, :pacient_id, :appointment_type, :date, :start)
+    end
   end
 
   def create

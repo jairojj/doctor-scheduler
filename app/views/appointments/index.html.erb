@@ -3,7 +3,11 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>Doutor</th>
+        <% if who_user == 'pacient' %>
+          <th>Doutor</th>
+        <% else %>
+          <th>Pacient</th>
+        <% end %>  
         <th>Consulta</th>
         <th>Dia</th>
         <th>Hora</th>
@@ -13,9 +17,13 @@
       <% @appointment.each do |appointment| %>
       <tr>
         <th><%= appointment.id %></th>
-        <th><%= get_doctor_by_id(appointment.doctor_id).name %></th>
+        <% if who_user == 'pacient' %>
+          <th><%= get_doctor_by_id(appointment.doctor_id).name %></th>
+        <% else %>
+          <th><%= get_pacient_by_id(appointment.pacient_id).name %></th>
+        <% end %>
         <th><%= appointment.appointment_type %></th>
-        <th><%= appointment.date %></th>
+        <th><%= appointment.date.to_formatted_s(:short) %></th>
         <th><%= appointment.start %> hrs</th>
         <th><%= link_to 'Cancelar consulta', appointments_destroy_path(:id => appointment.id), :data => {:confirm => 'Tem certeza?'}, :method => :delete, :class => "btn btn-small btn-danger" %></th>
       </tr>
