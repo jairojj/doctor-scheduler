@@ -23,7 +23,7 @@ class AppointmentsController < ApplicationController
       flash[:success] = 'Consulta marcada com sucesso'
       redirect_to '/doctors'
     else
-      flash[:danger] = 'Erro'
+      flash[:danger] = 'Todos os campos são obrigatórios'
       redirect_to "/appointments/new?id=#{params[:appointment][:doctor_id]}"
     end
   end

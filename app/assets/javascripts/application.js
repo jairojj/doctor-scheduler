@@ -19,6 +19,12 @@
 
 $(function(){
   
+  var date = new Date();
+  var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  
+  $('[data-behaviour~=datepicker]').datepicker({ 
+      startDate: today
+  });
   
   function formatDate(value)
   {
